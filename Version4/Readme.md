@@ -14,7 +14,12 @@ See for algo description https://github.com/bismuthfoundation/mining-algos/tree/
 
 # How to config
 
-The config file for all versions 
+The config file for all versions is `miner.cfg`.  
+It's a test file, with `#` begin comments. So anything after a `#` is ignored.  
+If you change a config item, make sure there is no `#`at the line beginning or it won't have any effect.
+
+The file itself comes with commented examples, but here is a detailled explanation of every setting:
+[config.md]
 
 
 # How to run
@@ -26,3 +31,15 @@ The config file for all versions
 
 
 # Troubleshooting
+
+## "invalid command queue" 
+
+This is the generic message for a gpu crash.   
+Most likely, too much overclock or temp too high.
+
+Check your drivers (olders work better), try to underpower, lower overclock.
+
+# FAQ
+
+## More hash?
+
