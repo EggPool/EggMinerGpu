@@ -19,7 +19,7 @@ It's a test file, with `#` begin comments. So anything after a `#` is ignored.
 If you change a config item, make sure there is no `#`at the line beginning or it won't have any effect.
 
 The file itself comes with commented examples, but here is a detailled explanation of every setting:
-[config.md]
+[https://github.com/EggPool/EggMinerGpu/blob/master/Version4/config.md]
 
 
 # How to run
