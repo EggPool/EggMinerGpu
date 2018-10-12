@@ -106,7 +106,7 @@ Some systems even list the same gpus twice, under two different platforms.
 
 You could also want to enable NVIDIA platform, but disable the AMD one.
 
-By using the param, the expluded GPU won't even be listed, and will be disabled.  
+By using the param, the excluded GPU won't even be listed, and will be disabled.  
 Matches over the start of the vendor string as listed by the miner.
 
 ## excludeVendors
