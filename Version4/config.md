@@ -42,7 +42,7 @@ It's a workaround for a bad implementation of the nvidia opencl layer.
 90 will lighten the CPU load, at the expense of a small HR loss on some system.  
 In a snap: If your CPU load is to heavy on Nvidia system, raise this.
 
-> More on the damping factor : [damping.md]
+> More on the damping factor : (damping factor)[damping.md]
 
 ## intensity
 
@@ -136,3 +136,29 @@ It's not being modified, it's not being accessed afterward.
 #### Don't ask why, and don"t remove it or you'll get a syntax error.
 
 ```
+
+# Command line switches
+
+Some params are also available via command line switches.  
+The param from command line wil ltake over miner.cfg file.
+
+## -n name
+
+Force that worker name
+
+`-a These_gpus_are_made_for_hashing`
+
+## -i intensities
+
+Like intensities from the config file.  
+For instance, to disable GPU#0 of a 4 GPUs rig:
+
+`-i 0,100,100,100`
+
+## -r restart
+
+Force an auto close of the miner after restart minutes.  
+Miner should then be restarted by the control script (provided bismuth.sh / bismuth.bat)
+
+To restart every 2 hours:
+`-r 120`
