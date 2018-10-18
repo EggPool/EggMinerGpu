@@ -96,7 +96,26 @@ Works the same as batch_size above.
 
 > You can use batch_size for setting defaults, then only one batch_size_xx for a specific gpu.
 
+## workgroup_size
+(*since 4.0.99*)
+*Advanced setting*
+
+Example: `workgroup_size = 512`
+
+Default is 0, means auto detect.
+
+Force a specific workgroup size for *all* the gpus.  
+**Has to be a multiple of 32**
+
+With no param, or 0, the miner auto detects what he thinks is the best setting for each GPU.  
+If you run with `-d`, it will display the auto detected workgroup size.
+The defaults should be ok for most GPU.  
+You can try to enforce a higher size than what is auto detecte on some systems (like AMDs).  
+*Beware:* setting too high a value **will** make your gpu crash.
+
+
 ## excludePlatforms
+*Advanced setting*
 
 Exemple: `excludePlatforms = ["First platform to exclude", "Second one"]`
 
@@ -110,6 +129,7 @@ By using the param, the excluded GPU won't even be listed, and will be disabled.
 Matches over the start of the vendor string as listed by the miner.
 
 ## excludeVendors
+*Advanced setting*
 
 Exemple: `excludeVendors = ["NVIDIA"]`
 
@@ -117,6 +137,7 @@ Exclude GPUS by vendor name.
 Matches over the start of the vendor string as listed by the miner.
 
 ## heavyFileName
+*Advanced setting*
 
 Exemple: `heavyFileName = "/an/alternate/location/to/heavy3a.bin"`
 
@@ -131,6 +152,15 @@ There will be little use of this, since the file, once written, will only be rea
 It's not being modified, it's not being accessed afterward.
 
 
+## restartAfter
+*Since 4.0.100*
+
+Force an auto close of the miner after restart minutes.  
+Miner should then be restarted by the control script (provided bismuth.sh / bismuth.bat)
+
+To restart every 2 hours:  
+`restartAfter = 120`
+
 ```
 #### This file needs an empty line at the end.
 #### Don't ask why, and don"t remove it or you'll get a syntax error.
@@ -142,23 +172,48 @@ It's not being modified, it's not being accessed afterward.
 Some params are also available via command line switches.  
 The param from command line wil ltake over miner.cfg file.
 
-## -n name
+## -a address
 
-Force that worker name
+Force that bismuth address as mining address
 
-`-a These_gpus_are_made_for_hashing`
+`-a my_own_bismuth_address`
 
-## -i intensities
+## -d debug
+
+Be more verbose and print out debug info.  
+May be useful for tuning, deactivate on prod systems.
+
+## -i intensity
 
 Like intensities from the config file.  
 For instance, to disable GPU#0 of a 4 GPUs rig:
 
 `-i 0,100,100,100`
 
+## -n name
+
+Force that worker name
+
+`-a These_gpus_are_made_for_hashing`
+
 ## -r restart
 
 Force an auto close of the miner after restart minutes.  
 Miner should then be restarted by the control script (provided bismuth.sh / bismuth.bat)
 
-To restart every 2 hours:
+To restart every 2 hours:  
 `-r 120`
+
+## -s sequential
+*Advanced setting*
+
+Force a sequential init of the GPUs intead of one gpu per thread.  
+Only impacts the init.
+
+Mainly used for debug/tuning, in addition to `-d`
+
+
+
+
+
+
