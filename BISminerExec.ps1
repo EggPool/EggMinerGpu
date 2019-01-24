@@ -2,11 +2,10 @@
 #
 # Variable to be modified if necessary
 #
-$timeOFF = "11:26"
-$timeON  = "11:27"
+$timeOFF = "11:30"
+$timeON  = "12:00"
 $fileLog = "BISminerExec.log"
-#$execMiner = "eggminer.exe"
-$execMiner = "notepad.exe"
+$execMiner = "eggminer.exe"
 $workingDirectoryMiner = "C:\EggPool" 
 #
 #
@@ -32,7 +31,7 @@ while($true)
     {
         $minerProcessObj = Start-process -FilePath $execMiner -WorkingDirectory $workingDirectoryMiner -PassThru
 
-        $infoLog = "$((Get-Date).ToString('yyyy:MM:dd HH:mm')) Starting Miner PID: $($processObj.Id)"
+        $infoLog = "$((Get-Date).ToString('yyyy:MM:dd HH:mm')) Starting Miner PID: $($minerProcessObj.Id)"
         Write-Host $infoLog -ForegroundColor Green
         Add-Content $fileLog $infoLog
     }
@@ -40,12 +39,12 @@ while($true)
     {
         Stop-Process -Id $minerProcessObj.Id
 
-        $infoLog = "$((Get-Date).ToString('yyyy:MM:dd HH:mm')) Stopping Miner PID: $($processObj.Id)"
+        $infoLog = "$((Get-Date).ToString('yyyy:MM:dd HH:mm')) Stopping Miner PID: $($minerProcessObj.Id)"
         Write-Host $infoLog -ForegroundColor Yellow
         Add-Content $fileLog $infoLog
 
         $minerProcessObj = $null
     }
 
-    Start-Sleep -s 2
+    Start-Sleep -s 60
 }
