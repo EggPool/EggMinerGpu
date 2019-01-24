@@ -24,8 +24,7 @@ while($true)
     $DateTimeNow = (Get-Date).ToString('HH:mm')
     $Run = $false
         
-    if ($DateTimeNow -lt $timeOFF) { $Run = $true }
-    if ($DateTimeNow -ge $timeON) { $Run = $true }
+    if ($DateTimeNow -lt $timeOFF -or $DateTimeNow -ge $timeON) { $Run = $true }
 
     if ($Run -eq $true -and $minerProcessObj -eq $null)  
     {
